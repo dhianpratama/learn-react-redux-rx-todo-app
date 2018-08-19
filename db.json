@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "text": "hello",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "text": "bandung",
+      "completed": false,
+      "id": 2
+    }
+  ]
+}
