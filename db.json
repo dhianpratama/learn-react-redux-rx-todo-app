@@ -2,13 +2,18 @@
   "todos": [
     {
       "text": "hello",
-      "completed": true,
+      "completed": false,
       "id": 1
     },
     {
       "text": "bandung",
-      "completed": false,
+      "completed": true,
       "id": 2
+    },
+    {
+      "text": "aaaa",
+      "completed": false,
+      "id": 3
     }
   ]
 }

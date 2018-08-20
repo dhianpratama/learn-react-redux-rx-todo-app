@@ -27,7 +27,7 @@ const createErrorAction = message => error => Observable.of({
 const fetchTodos = action$ =>
   action$.ofType(TODOS_FETCH_REQUEST)
     .mergeMap(() =>
-      ajax.getJSON('http://localhost:3001/todos')
+      ajax.getJSON(`${process.env.REACT_APP_API_HOST}/todos`)
         .map(response => ({ type: TODOS_FETCH_SUCCESS, payload: response }))
         .catch(createErrorAction('Failed to fetch tasks')),
     );
@@ -35,7 +35,7 @@ const fetchTodos = action$ =>
 const addTodo = action$ =>
   action$.ofType(TODOS_ADD_REQUEST)
     .mergeMap(action =>
-      ajax.post('http://localhost:3001/todos', {
+      ajax.post(`${process.env.REACT_APP_API_HOST}/todos`, {
         text: action.text,
         completed: false,
       }, { 'Content-Type': 'application/json' })
@@ -46,7 +46,7 @@ const addTodo = action$ =>
 const removeTodo = action$ =>
   action$.ofType(TODOS_REMOVE_REQUEST)
     .mergeMap(action =>
-      ajax.delete(`http://localhost:3001/todos/${action.id}`)
+      ajax.delete(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`)
         .map(() => ({ type: TODOS_REMOVE_SUCCESS, id: action.id }))
         .catch(createErrorAction(`Failed to remove task #${action.id}`)),
     );
@@ -54,7 +54,7 @@ const removeTodo = action$ =>
 const completeTodo = action$ =>
   action$.ofType(TODOS_COMPLETE_REQUEST)
     .mergeMap(action =>
-      ajax.patch(`http://localhost:3001/todos/${action.id}`, {
+      ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`, {
         completed: !action.completed,
       }, { 'Content-Type': 'application/json' })
         .map(() => ({ type: TODOS_COMPLETE_SUCCESS, id: action.id }))
@@ -65,7 +65,7 @@ const removeCompletedTodos = (action$, { getState }) =>
   action$.ofType(TODOS_REMOVE_COMPLETED_REQUEST)
     .mergeMap(() => Observable.forkJoin(
         ...getState().todos.data.filter(todo => todo.completed).map(todo =>
-          ajax.delete(`http://localhost:3001/todos/${todo.id}`),
+          ajax.delete(`${process.env.REACT_APP_API_HOST}/todos/${todo.id}`),
         ),
       )
       .map(() => ({ type: TODOS_REMOVE_COMPLETED_SUCCESS }))
@@ -75,7 +75,7 @@ const removeCompletedTodos = (action$, { getState }) =>
 const editTodo = action$ =>
   action$.ofType(TODOS_EDIT_REQUEST)
     .mergeMap(action =>
-      ajax.patch(`http://localhost:3001/todos/${action.id}`, {
+      ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`, {
         text: action.text,
       }, { 'Content-Type': 'application/json' })
         .map(() => ({ type: TODOS_EDIT_SUCCESS, id: action.id, text: action.text }))
