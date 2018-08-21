@@ -135,24 +135,6 @@ button {
   color: white;
 }
 
-/* Style the header */
-.header {
-  background-color: #000000;
-  padding: 10px 40px;
-  color: white;
-  text-align: center;
-}
-
-/* Clear floats after the header */
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.header img.logo {
-	height: 20px;
-}
 
 /* Style the input */
 input[type="text"] {
@@ -161,11 +143,6 @@ input[type="text"] {
   border-radius: 0;
   padding: 10px;
   font-size: 16px;
-}
-
-/* Style the "Add" button */
-.todo-text-input button.add-task {
-  font-size: 1em;
 }
 
 .addBtn:hover {

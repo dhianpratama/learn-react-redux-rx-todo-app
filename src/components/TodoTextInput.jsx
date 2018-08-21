@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import './TodoTextInput.css';
+
 export default class TodoTextInput extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
@@ -52,13 +54,12 @@ export default class TodoTextInput extends Component {
 
   render() {
     return (
-      <div className="container header todo-text-input">
+      <div className="todo-text-input">
         <input
           className={
             classnames({
               'edit': this.props.editing,
-              'new-todo': this.props.newTodo,
-              'flex-8': true
+              'new-todo': this.props.newTodo
             })
           }
           type="text"
@@ -70,7 +71,7 @@ export default class TodoTextInput extends Component {
           onKeyDown={this.handleSubmit}
         />
         <button
-          className="flex-2 add-task"
+          className="add-task"
           onClick={this.saveTask}>
           Add Task
         </button>

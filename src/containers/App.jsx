@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '../styles/index.css';
-import '../styles/flexboxGrid.css';
+import '../styles/flexbox-grid.css';
 
 
 const App = ({ children }) => {

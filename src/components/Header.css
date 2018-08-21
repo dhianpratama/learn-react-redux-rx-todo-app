@@ -1,0 +1,28 @@
+/* Style the header */
+.header {
+  background-color: #000000;
+  padding: 10px 10px;
+  color: white;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.header label.title {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin: 15px 0;
+}
+
+.header img.logo {
+	height: 20px;
+  align-self: flex-start;
+}
+
+@media (min-width: 48em) {
+  .header label.title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+}

@@ -1,0 +1,43 @@
+.todo-text-input {
+  background: gray;
+}
+
+.todo-text-input {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.todo-text-input input {
+  flex: 1;
+}
+
+.todo-text-input button {
+  flex: 1;
+}
+
+.todo-text-input button.add-task {
+  font-size: 1em;
+  background: yellow;
+  min-height: 38px;
+  background: #ff9531;
+  font-weight: bold;
+  color: white;
+  border: 1px solid #ff9531;
+}
+
+@media (min-width: 48em) {
+  .todo-text-input {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 40px;
+  }
+
+  .todo-text-input input {
+    flex: 8;
+  }
+
+  .todo-text-input button {
+    flex: 2;
+  }
+}

@@ -68,7 +68,6 @@ body {
 
 
 /* Mobile First */
-
 .flex,
 .flex-2,
 .flex-4,
@@ -77,8 +76,6 @@ body {
 .flex-10  {
   flex: 1;
 }
-
-
 
 /* Large screen (Desktop) */
 @media (min-width: 48em) {
