@@ -52,7 +52,7 @@ export default class TodoTextInput extends Component {
 
   render() {
     return (
-      <div className="container header">
+      <div className="container header todo-text-input">
         <input
           className={
             classnames({
@@ -70,7 +70,7 @@ export default class TodoTextInput extends Component {
           onKeyDown={this.handleSubmit}
         />
         <button
-          className="flex-2"
+          className="flex-2 add-task"
           onClick={this.saveTask}>
           Add Task
         </button>

@@ -25,7 +25,7 @@ class TodoDetailPage extends React.Component {
     return (
       <div>
         <Header
-          title="My To-Do Detail"
+          title="MY TASK DETAIL"
           loading={todo.pending}
           error={todo.error ? todo.error.message : ''}
         />

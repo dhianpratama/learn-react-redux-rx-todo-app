@@ -74,6 +74,7 @@ export default class TodoItem extends Component {
         className={classnames({
           completed: todo.completed,
           editing: this.state.editing,
+          clickable: true
         })}
       >
         {element}

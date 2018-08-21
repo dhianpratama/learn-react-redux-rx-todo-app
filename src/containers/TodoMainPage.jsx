@@ -48,14 +48,14 @@ class TodoMainPage extends React.Component {
       <div>
         <Header
           addTodo={this.props.addTodo}
-          title="My To-Do List"
+          title="MY TODO LIST"
           loading={todos.pending && !todos.data.length}
           error={todos.error ? todos.error.message : ''}
         />
         <TodoTextInput
           newTodo
           onSave={this.handleSave}
-          placeholder="What needs to be done?"
+          placeholder="Write your task here ..."
         />
         <TodoList
           todos={todos}

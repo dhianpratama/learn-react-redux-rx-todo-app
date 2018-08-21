@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../modules/visibilityFilter/actions';
 
+import './Footer.css';
+
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',
-  [SHOW_ACTIVE]: 'Active',
+  [SHOW_ACTIVE]: 'Outstanding',
   [SHOW_COMPLETED]: 'Completed',
 };
 
@@ -20,11 +22,11 @@ export default class Footer extends Component {
 
   _renderTodoCount() {
     const { activeCount } = this.props;
-    const itemWord = activeCount === 1 ? 'item' : 'items';
+    const itemWord = activeCount === 1 ? 'task' : 'tasks';
 
     return (
       <span className="todo-count">
-        <strong>{activeCount || 'No'}</strong> {itemWord} left
+        <strong>{activeCount || 'No'}</strong> outstanding {itemWord}
       </span>
     );
   }
@@ -45,24 +47,9 @@ export default class Footer extends Component {
     );
   }
 
-  _renderClearButton() {
-    const { completedCount, onClearCompleted } = this.props;
-    if (completedCount > 0) {
-      return (
-        <button
-          className="clear-completed"
-          onClick={onClearCompleted}
-        >
-          Clear completed
-        </button>
-      );
-    }
-    return null;
-  }
-
   render() {
     return (
-      <footer className="footer">
+      <footer className="footer pad-l-r-10">
         {this._renderTodoCount()}
         <ul className="filters">
           {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
@@ -70,8 +57,15 @@ export default class Footer extends Component {
               {this._renderFilterLink(filter)}
             </li>,
           )}
+          <li key="CLEAR_ALL_COMPLETED">
+            <a
+              className="clear-completed"
+              onClick={this.props.onClearCompleted}
+            >
+            Delete All Completed
+            </a>
+          </li>
         </ul>
-        {this._renderClearButton()}
       </footer>
     );
   }

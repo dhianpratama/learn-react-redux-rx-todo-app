@@ -70,19 +70,21 @@ export default class TodoList extends Component {
     const completedCount = todos.data.filter(filters[SHOW_COMPLETED]).length;
 
     return todos.pending && !todos.data.length ? null : (
-      <section className="todo-list">
-        <ul>
-          {filteredTodos.map(todo => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              editTodo={this.props.editTodo}
-              deleteTodo={this.props.deleteTodo}
-              completeTodo={this.props.completeTodo}
-              navigateToDetail={this.props.navigateToDetail}
-            />
-          ))}
-        </ul>
+      <section>
+        <div className="todo-list">
+          <ul>
+            {filteredTodos.map(todo => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                editTodo={this.props.editTodo}
+                deleteTodo={this.props.deleteTodo}
+                completeTodo={this.props.completeTodo}
+                navigateToDetail={this.props.navigateToDetail}
+              />
+            ))}
+          </ul>
+        </div>
         {this._renderFooter(completedCount)}
       </section>
     );

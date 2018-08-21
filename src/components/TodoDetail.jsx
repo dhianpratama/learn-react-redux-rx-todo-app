@@ -18,8 +18,8 @@ export default class TodoDetail extends Component {
 
   render() {
     return (
-      <div>
-        <h3>To-Do : {this.props.todoData ? this.props.todoData.text : "-"}</h3>
+      <div className="todo-detail pad-l-r-10">
+        <h3>Task : {this.props.todoData ? this.props.todoData.text : "-"}</h3>
         <h3>Status : {this.props.todoData
           ? (this.props.todoData.completed ? "Completed" : "Active")
           : "-"}
@@ -30,7 +30,7 @@ export default class TodoDetail extends Component {
           : <span></span>
         }
         <button
-          className="destroy"
+          className="back-to-main-page"
           onClick={() => this.backToMainPage()}
         >
         Back
