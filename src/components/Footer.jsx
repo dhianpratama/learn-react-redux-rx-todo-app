@@ -59,7 +59,7 @@ export default class Footer extends Component {
               className={classnames({ selected: filter === selectedFilter })}
               onClick={() => filterTodos(filter)}
               >
-              {FILTER_TITLES[filter]}\
+              {FILTER_TITLES[filter]}
             </button>,
           )}
           <button className="clear-completed">
