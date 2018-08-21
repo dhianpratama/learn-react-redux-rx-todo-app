@@ -48,24 +48,28 @@ export default class Footer extends Component {
   }
 
   render() {
+    const { filter: selectedFilter, filterTodos } = this.props;
+
     return (
       <footer className="footer pad-l-r-10">
         {this._renderTodoCount()}
-        <ul className="filters">
+        <div className="filters">
           {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
-            <li key={filter}>
-              {this._renderFilterLink(filter)}
-            </li>,
+            <button
+              className={classnames({ selected: filter === selectedFilter })}
+              onClick={() => filterTodos(filter)}
+              >
+              {FILTER_TITLES[filter]}\
+            </button>,
           )}
-          <li key="CLEAR_ALL_COMPLETED">
+          <button className="clear-completed">
             <a
-              className="clear-completed"
               onClick={this.props.onClearCompleted}
             >
             Delete All Completed
             </a>
-          </li>
-        </ul>
+          </button>
+        </div>
       </footer>
     );
   }
