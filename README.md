@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Try the demo [Here](http://react-redux-rx-todo-app.dhianpratama.com)
+Try the demo [Here](http://react-redux-rx-todo.dhianpratama.com)
 
 ## Requirements
 * node `^5.0.0`
