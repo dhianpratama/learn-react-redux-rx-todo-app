@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router'
 import Moment from 'moment';
 
+import './TodoDetail.css';
+
 const DATE_FORMAT = 'DD MMM YYYY hh:mm:ss';
 
 export default class TodoDetail extends Component {
@@ -29,6 +31,7 @@ export default class TodoDetail extends Component {
           ? <h3>Completed At : { Moment(this.props.todoData.completedAt).format(DATE_FORMAT) }</h3>
           : <span></span>
         }
+        <div className="spacer"></div>
         <button
           className="back-to-main-page"
           onClick={() => this.backToMainPage()}
