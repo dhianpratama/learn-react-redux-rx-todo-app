@@ -1,0 +1,102 @@
+body {
+  color: #404040;
+}
+
+.wrapper{
+  max-width: 1200px;
+  margin: auto;
+  /* border: 1px solid red; */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container.align-start {
+
+}
+
+.container.align-start-start {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container.align-start-center {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container.align-start-end {
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.container.align-center-start {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container.align-center-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.container.align-center-end {
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.container.align-end-start {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.container.align-end-center {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container.align-end-start {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.container.align-space-between {
+  justify-content: space-between;
+}
+
+
+/* Mobile First */
+
+.flex,
+.flex-2,
+.flex-4,
+.flex-6,
+.flex-8,
+.flex-10  {
+  flex: 1;
+}
+
+
+
+/* Large screen (Desktop) */
+@media (min-width: 48em) {
+  .flex,
+  .flex-10  {
+    flex: 1;
+  }
+
+  .flex-2 {
+    flex: 2
+  }
+  .flex-4 {
+    flex: 4
+  }
+  .flex-6 {
+    flex: 6
+  }
+  .flex-8 {
+    flex: 8
+  }
+}

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router'
+
 import Header from '../components/Header';
-import MainSection from '../components/MainSection';
+import TodoList from '../components/TodoList';
 import {
   fetchTodos,
   addTodo,
   removeCompleted,
   editTodo,
   deleteTodo,
-  completeTodo,
+  completeTodo
 } from '../modules/todoMain/actions';
 import { setVisibilityFilter } from '../modules/visibilityFilter/actions';
 
@@ -25,6 +27,7 @@ class TodoMain extends React.Component {
     editTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired,
+    navigateToDetail: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -40,7 +43,7 @@ class TodoMain extends React.Component {
           loading={todos.pending && !todos.data.length}
           error={todos.error ? todos.error.message : ''}
         />
-        <MainSection
+        <TodoList
           todos={todos}
           filter={this.props.filter}
           filterTodos={this.props.filterTodos}
@@ -48,6 +51,7 @@ class TodoMain extends React.Component {
           editTodo={this.props.editTodo}
           deleteTodo={this.props.deleteTodo}
           completeTodo={this.props.completeTodo}
+          navigateToDetail={this.props.navigateToDetail}
         />
       </div>
     );
@@ -67,6 +71,7 @@ const mapDispatchToProps = dispatch => ({
   editTodo: (id, text) => dispatch(editTodo(id, text)),
   deleteTodo: id => dispatch(deleteTodo(id)),
   completeTodo: (id, completed) => dispatch(completeTodo(id, completed)),
+  navigateToDetail: (url) => { console.log('url', url); return browserHistory.push(url); }
 });
 
 export default connect(

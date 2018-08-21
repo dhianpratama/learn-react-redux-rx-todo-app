@@ -17,8 +17,8 @@ const createErrorAction = message => error => Observable.of({
 const getTodoDetail = action$ =>
   action$.ofType(TODOS_GET_DETAIL_REQUEST)
     .mergeMap(action =>
-      ajax.get(`http://localhost:3001/todos/${action.id}`)
-        .map(() => ({ type: TODOS_GET_DETAIL_SUCCESS, id: action.id }))
+      ajax.get(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`)
+        .map(({ response }) => ({ type: TODOS_GET_DETAIL_SUCCESS, payload: response }))
         .catch(createErrorAction(`Failed to remove task #${action.id}`)),
     );
 

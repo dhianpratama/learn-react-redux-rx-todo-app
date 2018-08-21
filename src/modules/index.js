@@ -21,8 +21,7 @@ export const epics = combineEpics(
 
 export const reducers = combineReducers({
   todos: todoMainReducer,
-  todoMainReducer,
-  todoDetailReducer,
+  todo: todoDetailReducer,
   visibilityFilter,
   routing: routerReducer
 });

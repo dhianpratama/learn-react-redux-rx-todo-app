@@ -27,10 +27,14 @@ export default class TodoTextInput extends Component {
     this.setState({ test: props.text });
   }
 
+  saveTask = () => {
+    this.props.onSave(this.state.text);
+  }
+
   handleSubmit = (e) => {
     const text = e.target.value.trim();
     if (e.which === 13) {
-      this.props.onSave(text);
+      this.saveTask();
       if (this.props.newTodo) {
         this.setState({ text: '' });
       }
@@ -49,21 +53,29 @@ export default class TodoTextInput extends Component {
 
   render() {
     return (
-      <input
-        className={
-          classnames({
-            edit: this.props.editing,
-            'new-todo': this.props.newTodo,
-          })
-        }
-        type="text"
-        placeholder={this.props.placeholder}
-        autoFocus="true"
-        value={this.state.text}
-        onBlur={this.handleBlur}
-        onChange={this.handleChange}
-        onKeyDown={this.handleSubmit}
-      />
+      <div className="container">
+        <input
+          className={
+            classnames({
+              'edit': this.props.editing,
+              'new-todo': this.props.newTodo,
+              'flex-8': true
+            })
+          }
+          type="text"
+          placeholder={this.props.placeholder}
+          autoFocus="true"
+          value={this.state.text}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          onKeyDown={this.handleSubmit}
+        />
+        <button
+          className="flex-2"
+          onClick={this.saveTask}>
+          Add Task
+        </button>
+      </div>
     );
   }
 }

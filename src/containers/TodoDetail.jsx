@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router'
 import {
   getTodoDetail
 } from '../modules/todoDetail/actions';
@@ -16,18 +17,29 @@ class TodoDetail extends React.Component {
     this.props.getTodoDetail(this.props.todoId);
   }
 
+  backToMainPage = () => {
+    browserHistory.push('/');
+  }
+
   render() {
-    const { todoId } = this.props;
+    const { todo } = this.props;
     return (
       <div>
-        <h1>Todo Detail {todoId}</h1>;
+        <h1>Todo Detail {todo.data.text}</h1>;
+        <button
+          className="destroy"
+          onClick={() => this.backToMainPage()}
+        >
+        Back
+        </button>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  todoId: ownProps.params.id
+  todoId: ownProps.params.id,
+  todo: state.todo
 });
 
 const mapDispatchToProps = dispatch => ({

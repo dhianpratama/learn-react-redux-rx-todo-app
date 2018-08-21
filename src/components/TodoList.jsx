@@ -10,7 +10,7 @@ const filters = {
   [SHOW_COMPLETED]: todo => todo.completed,
 };
 
-export default class MainSection extends Component {
+export default class TodoList extends Component {
   static propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     todos: PropTypes.object.isRequired,
@@ -20,6 +20,7 @@ export default class MainSection extends Component {
     editTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired,
+    navigateToDetail: PropTypes.func.isRequired
   }
 
   _removeCompletedHandler = () => {
@@ -69,9 +70,8 @@ export default class MainSection extends Component {
     const completedCount = todos.data.filter(filters[SHOW_COMPLETED]).length;
 
     return todos.pending && !todos.data.length ? null : (
-      <section className="main">
-        {this._renderToggleAll(completedCount)}
-        <ul className="todo-list">
+      <section className="todo-list">
+        <ul>
           {filteredTodos.map(todo => (
             <TodoItem
               key={todo.id}
@@ -79,6 +79,7 @@ export default class MainSection extends Component {
               editTodo={this.props.editTodo}
               deleteTodo={this.props.deleteTodo}
               completeTodo={this.props.completeTodo}
+              navigateToDetail={this.props.navigateToDetail}
             />
           ))}
         </ul>

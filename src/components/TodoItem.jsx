@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
 import TodoTextInput from './TodoTextInput';
 
 export default class TodoItem extends Component {
@@ -10,6 +11,7 @@ export default class TodoItem extends Component {
     editTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     completeTodo: PropTypes.func.isRequired,
+    navigateToDetail: PropTypes.func.isRequired
   }
 
   state = {
@@ -21,12 +23,14 @@ export default class TodoItem extends Component {
   }
 
   handleSave = (id, text) => {
-    if (text.length === 0) {
-      this.props.deleteTodo(id);
-    } else {
+    if (text.length > 0) {
       this.props.editTodo(id, text);
     }
     this.setState({ editing: false });
+  }
+
+  handleSingleClick = (todoId) => {
+    this.props.navigateToDetail(`/todos/${todoId}`);
   }
 
   render() {
@@ -42,17 +46,21 @@ export default class TodoItem extends Component {
         />
       );
     } else {
+      const checkboxId = `checkboxItem${todo.id}`;
       element = (
-        <div className="view">
-          <input
-            className="toggle"
-            type="checkbox"
-            checked={todo.completed}
-            onChange={() => completeTodo(todo.id, todo.completed)}
-          />
-          <label htmlFor="itself" onDoubleClick={this.handleDoubleClick}>
-            {todo.text}
-          </label>
+        <div className="container flex">
+          <div className="round">
+            <input
+              id={checkboxId}
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => completeTodo(todo.id, todo.completed)}
+            />
+            <label htmlFor={checkboxId}></label>
+          </div>
+          <div className="flex" onClick={()=> this.handleSingleClick(todo.id)}>
+            <p> {todo.text} </p>
+          </div>
           <button
             className="destroy"
             onClick={() => deleteTodo(todo.id)}

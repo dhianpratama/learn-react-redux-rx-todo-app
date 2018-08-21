@@ -1,10 +1,13 @@
 import React from 'react';
 
-import 'todomvc-app-css/index.css';
+import '../styles/index.css';
+import '../styles/flexboxGrid.css';
+
 
 const App = ({ children }) => {
   return (
-    <div>
+    <div
+      className="wrapper">
       {children}
     </div>
   );
