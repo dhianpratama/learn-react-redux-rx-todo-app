@@ -136,7 +136,7 @@ ul li div.container {
 /* Style the header */
 .header {
   background-color: #000000;
-  padding: 30px 40px;
+  padding: 10px 40px;
   color: white;
   text-align: center;
 }
@@ -146,6 +146,10 @@ ul li div.container {
   content: "";
   display: table;
   clear: both;
+}
+
+.header img.logo {
+	height: 20px;
 }
 
 /* Style the input */

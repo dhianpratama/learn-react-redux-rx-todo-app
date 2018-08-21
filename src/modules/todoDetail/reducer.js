@@ -7,7 +7,7 @@ import {
 const initialState = {
   pending: false,
   error: null,
-  data: [],
+  data: null,
 };
 
 export default (state = initialState, action) => {

@@ -1,6 +1,7 @@
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
+import Moment from 'moment';
 
 import {
   TODOS_AJAX_FAILURE,
@@ -38,6 +39,7 @@ const addTodo = action$ =>
       ajax.post(`${process.env.REACT_APP_API_HOST}/todos`, {
         text: action.text,
         completed: false,
+        createdAt: Moment().format()
       }, { 'Content-Type': 'application/json' })
         .map(({ response }) => ({ type: TODOS_ADD_SUCCESS, id: response.id, text: action.text }))
         .catch(createErrorAction('Failed to add a new task')),
@@ -56,6 +58,7 @@ const completeTodo = action$ =>
     .mergeMap(action =>
       ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`, {
         completed: !action.completed,
+        completedAt: Moment().format()
       }, { 'Content-Type': 'application/json' })
         .map(() => ({ type: TODOS_COMPLETE_SUCCESS, id: action.id }))
         .catch(createErrorAction(`Failed to mark task #${action.id} as completed`)),

@@ -5,6 +5,8 @@ import { browserHistory } from 'react-router'
 
 import Header from '../components/Header';
 import TodoList from '../components/TodoList';
+import TodoTextInput from '../components/TodoTextInput';
+
 import {
   fetchTodos,
   addTodo,
@@ -15,7 +17,7 @@ import {
 } from '../modules/todoMain/actions';
 import { setVisibilityFilter } from '../modules/visibilityFilter/actions';
 
-class TodoMain extends React.Component {
+class TodoMainPage extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     todos: PropTypes.object.isRequired,
@@ -34,14 +36,26 @@ class TodoMain extends React.Component {
     this.props.fetchTodos();
   }
 
+  handleSave = (text) => {
+    if (text.length !== 0) {
+      this.props.addTodo(text);
+    }
+  }
+
   render() {
     const { todos } = this.props;
     return (
       <div>
         <Header
           addTodo={this.props.addTodo}
+          title="My To-Do List"
           loading={todos.pending && !todos.data.length}
           error={todos.error ? todos.error.message : ''}
+        />
+        <TodoTextInput
+          newTodo
+          onSave={this.handleSave}
+          placeholder="What needs to be done?"
         />
         <TodoList
           todos={todos}
@@ -77,4 +91,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TodoMain);
+)(TodoMainPage);

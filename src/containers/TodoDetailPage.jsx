@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router'
+
+import Header from '../components/Header';
+import TodoDetail from '../components/TodoDetail';
+
 import {
   getTodoDetail
 } from '../modules/todoDetail/actions';
 
-class TodoDetail extends React.Component {
+class TodoDetailPage extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     todoId: PropTypes.string.isRequired,
@@ -17,21 +20,20 @@ class TodoDetail extends React.Component {
     this.props.getTodoDetail(this.props.todoId);
   }
 
-  backToMainPage = () => {
-    browserHistory.push('/');
-  }
-
   render() {
     const { todo } = this.props;
     return (
       <div>
-        <h1>Todo Detail {todo.data.text}</h1>;
-        <button
-          className="destroy"
-          onClick={() => this.backToMainPage()}
-        >
-        Back
-        </button>
+        <Header
+          title="My To-Do Detail"
+          loading={todo.pending}
+          error={todo.error ? todo.error.message : ''}
+        />
+        <TodoDetail
+          loading={todo.pending}
+          error={todo.error ? todo.error.message : ''}
+          todoData={todo.data ? todo.data : {} }
+        />
       </div>
     );
   }
@@ -49,4 +51,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TodoDetail);
+)(TodoDetailPage);

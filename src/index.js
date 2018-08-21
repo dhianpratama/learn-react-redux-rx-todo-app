@@ -7,8 +7,8 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { createEpicMiddleware } from 'redux-observable';
 
-import TodoMain from './containers/TodoMain';
-import TodoDetail from './containers/TodoDetail';
+import TodoMainPage from './containers/TodoMainPage';
+import TodoDetailPage from './containers/TodoDetailPage';
 import App from './containers/App';
 import { reducers, epics } from './modules';
 
@@ -32,8 +32,8 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={App}>
-        <IndexRoute component={TodoMain} />
-        <Route path='todos/:id' component={TodoDetail} />
+        <IndexRoute component={TodoMainPage} />
+        <Route path='todos/:id' component={TodoDetailPage} />
       </Route>
     </Router>
   </Provider>,

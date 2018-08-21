@@ -32,7 +32,6 @@ export default class TodoTextInput extends Component {
   }
 
   handleSubmit = (e) => {
-    const text = e.target.value.trim();
     if (e.which === 13) {
       this.saveTask();
       if (this.props.newTodo) {
@@ -53,7 +52,7 @@ export default class TodoTextInput extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container header">
         <input
           className={
             classnames({
