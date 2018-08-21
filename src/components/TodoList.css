@@ -92,6 +92,8 @@
 	color: #cc9a9a;
 	transition: color 0.2s ease-out;
   border-radius: 50%;
+  background: transparent;
+  border: 0px;
 }
 
 .todo-list li .destroy:hover {
