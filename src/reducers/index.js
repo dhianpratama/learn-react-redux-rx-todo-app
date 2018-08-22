@@ -9,5 +9,5 @@ export default combineReducers({
   todos: todoMainReducer,
   todo: todoDetailReducer,
   visibilityFilter,
-  routing: routerReducer
+  routing: routerReducer,
 });

@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import TodoDetail from '../components/TodoDetail';
 
 import {
-  getTodoDetail
+  getTodoDetail,
 } from '../actions/TodoDetailActions';
 
 class TodoDetailPage extends React.Component {

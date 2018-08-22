@@ -13,7 +13,7 @@ import {
   removeCompleted,
   editTodo,
   deleteTodo,
-  completeTodo
+  completeTodo,
 } from '../actions/TodoMainActions';
 import { setVisibilityFilter } from '../actions/VisibilityFilterActions';
 

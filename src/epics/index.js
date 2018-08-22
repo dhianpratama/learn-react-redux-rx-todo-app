@@ -5,5 +5,5 @@ import todoDetailEpic from '../epics/TodoDetailEpics';
 
 export default combineEpics(
   todoMainEpic,
-  todoDetailEpic
+  todoDetailEpic,
 );

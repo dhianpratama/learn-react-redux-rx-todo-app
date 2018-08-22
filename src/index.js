@@ -25,18 +25,18 @@ const store = createStore(
 );
 const history = syncHistoryWithStore(
   browserHistory,
-  store
+  store,
 );
 
 render(
   // eslint-disable-next-line react/jsx-filename-extension
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/' component={App}>
+      <Route path="/" component={App}>
         <IndexRoute component={TodoMainPage} />
-        <Route path='todos/:id' component={TodoDetailPage} />
+        <Route path="todos/:id" component={TodoDetailPage} />
       </Route>
     </Router>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById("root"),
 );

@@ -5,7 +5,7 @@ import { ajax } from 'rxjs/observable/dom/ajax';
 import {
   TODOS_GET_DETAIL_REQUEST,
   TODOS_GET_DETAIL_SUCCESS,
-  TODOS_AJAX_FAILURE
+  TODOS_AJAX_FAILURE,
 } from '../constants/ActionNames';
 
 const createErrorAction = message => error => Observable.of({
