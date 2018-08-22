@@ -2,7 +2,7 @@ import {
   TODOS_AJAX_FAILURE,
   TODOS_GET_DETAIL_REQUEST,
   TODOS_GET_DETAIL_SUCCESS
-} from '../actions/TodoDetailActions';
+} from '../constants/ActionNames'
 
 const initialState = {
   pending: false,

@@ -17,7 +17,7 @@ import {
   TODOS_EDIT_SUCCESS,
   TODOS_REMOVE_COMPLETED_REQUEST,
   TODOS_REMOVE_COMPLETED_SUCCESS,
-} from '../actions/TodoMainActions';
+} from '../constants/ActionNames';
 
 const createErrorAction = message => error => Observable.of({
   type: TODOS_AJAX_FAILURE,

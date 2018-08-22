@@ -6,7 +6,7 @@ import {
   TODOS_GET_DETAIL_REQUEST,
   TODOS_GET_DETAIL_SUCCESS,
   TODOS_AJAX_FAILURE
-} from '../actions/TodoDetailActions';
+} from '../constants/ActionNames';
 
 const createErrorAction = message => error => Observable.of({
   type: TODOS_AJAX_FAILURE,

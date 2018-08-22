@@ -1,4 +1,4 @@
-import { SET_VISIBILITY_FILTER, SHOW_ALL } from '../actions/VisibilityFilterActions';
+import { SET_VISIBILITY_FILTER, SHOW_ALL } from '../constants/ActionNames';
 
 export default (state = SHOW_ALL, action) => {
   if (action.type === SET_VISIBILITY_FILTER) {
