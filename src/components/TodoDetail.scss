@@ -1,0 +1,29 @@
+.todo-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-detail h3 {
+  margin: 10px 0;
+}
+
+.todo-detail button.back-to-main-page{
+	border: 1px solid #ff9532;
+  border-radius: 10px;
+  color: #ff9532;
+  font-size: 1em;
+  height: 40px;
+  background: transparent;
+}
+
+@media (min-width: 48em) {
+  .todo-detail button.back-to-main-page{
+  	border: 1px solid #ff9532;
+    border-radius: 10px;
+    color: #ff9532;
+    font-size: 1em;
+    height: 40px;
+    background: transparent;
+    width: 100px;
+  }
+}
