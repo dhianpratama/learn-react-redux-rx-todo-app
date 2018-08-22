@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router'
-import Moment from 'moment';
+
+import { displayDate } from '../services/DateService';
 
 import '../styles/TodoDetail.css';
-
-const DATE_FORMAT = 'DD MMM YYYY hh:mm:ss';
 
 export default class TodoDetail extends Component {
   static propTypes = {
@@ -26,9 +25,9 @@ export default class TodoDetail extends Component {
           ? (this.props.todoData.completed ? "Completed" : "Active")
           : "-"}
         </h3>
-        <h3>Created At : { Moment(this.props.todoData.createdAt).format(DATE_FORMAT) }</h3>
+        <h3>Created At : { displayDate(this.props.todoData.createdAt) }</h3>
         { this.props.todoData.completedAt
-          ? <h3>Completed At : { Moment(this.props.todoData.completedAt).format(DATE_FORMAT) }</h3>
+          ? <h3>Completed At : { displayDate(this.props.todoData.completedAt) }</h3>
           : <span></span>
         }
         <div className="spacer"></div>

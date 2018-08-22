@@ -56,6 +56,7 @@ export default class Footer extends Component {
         <div className="filters">
           {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
             <button
+              key={filter}
               className={classnames({ selected: filter === selectedFilter })}
               onClick={() => filterTodos(filter)}
               >
