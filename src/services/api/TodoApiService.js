@@ -26,7 +26,6 @@ class TodoApiService {
   }
 
   static updateComplete(id, completed) {
-    console.log('update completed ', id, completed)
     return ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${id}`, {
       completed: !completed,
       completedAt: Moment().utc()

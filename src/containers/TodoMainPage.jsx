@@ -85,7 +85,7 @@ const mapDispatchToProps = dispatch => ({
   editTodo: (id, text) => dispatch(editTodo(id, text)),
   deleteTodo: id => dispatch(deleteTodo(id)),
   completeTodo: (id, completed) => dispatch(completeTodo(id, completed)),
-  navigateToDetail: (url) => { console.log('url', url); return browserHistory.push(url); }
+  navigateToDetail: (url) => { browserHistory.push(url); }
 });
 
 export default connect(
