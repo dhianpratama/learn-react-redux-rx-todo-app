@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
-import { ajax } from 'rxjs/observable/dom/ajax';
-import Moment from 'moment';
+
+import TodoApiService from '../services/api/TodoApiService';
 
 import {
   TODOS_AJAX_FAILURE,
@@ -28,7 +28,7 @@ const createErrorAction = message => error => Observable.of({
 const fetchTodos = action$ =>
   action$.ofType(TODOS_FETCH_REQUEST)
     .mergeMap(() =>
-      ajax.getJSON(`${process.env.REACT_APP_API_HOST}/todos`)
+      TodoApiService.listAll()
         .map(response => ({ type: TODOS_FETCH_SUCCESS, payload: response }))
         .catch(createErrorAction('Failed to fetch tasks')),
     );
@@ -36,11 +36,7 @@ const fetchTodos = action$ =>
 const addTodo = action$ =>
   action$.ofType(TODOS_ADD_REQUEST)
     .mergeMap(action =>
-      ajax.post(`${process.env.REACT_APP_API_HOST}/todos`, {
-        text: action.text,
-        completed: false,
-        createdAt: Moment().format()
-      }, { 'Content-Type': 'application/json' })
+      TodoApiService.addNew(action.text)
         .map(({ response }) => ({ type: TODOS_ADD_SUCCESS, id: response.id, text: action.text }))
         .catch(createErrorAction('Failed to add a new task')),
     );
@@ -48,7 +44,7 @@ const addTodo = action$ =>
 const removeTodo = action$ =>
   action$.ofType(TODOS_REMOVE_REQUEST)
     .mergeMap(action =>
-      ajax.delete(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`)
+      TodoApiService.delete(action.id)
         .map(() => ({ type: TODOS_REMOVE_SUCCESS, id: action.id }))
         .catch(createErrorAction(`Failed to remove task #${action.id}`)),
     );
@@ -56,10 +52,7 @@ const removeTodo = action$ =>
 const completeTodo = action$ =>
   action$.ofType(TODOS_COMPLETE_REQUEST)
     .mergeMap(action =>
-      ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`, {
-        completed: !action.completed,
-        completedAt: Moment().format()
-      }, { 'Content-Type': 'application/json' })
+      TodoApiService.updateComplete(action.id, action.completed)
         .map(() => ({ type: TODOS_COMPLETE_SUCCESS, id: action.id }))
         .catch(createErrorAction(`Failed to mark task #${action.id} as completed`)),
     );
@@ -68,7 +61,7 @@ const removeCompletedTodos = (action$, { getState }) =>
   action$.ofType(TODOS_REMOVE_COMPLETED_REQUEST)
     .mergeMap(() => Observable.forkJoin(
         ...getState().todos.data.filter(todo => todo.completed).map(todo =>
-          ajax.delete(`${process.env.REACT_APP_API_HOST}/todos/${todo.id}`),
+          TodoApiService.delete(todo.id),
         ),
       )
       .map(() => ({ type: TODOS_REMOVE_COMPLETED_SUCCESS }))
@@ -78,9 +71,7 @@ const removeCompletedTodos = (action$, { getState }) =>
 const editTodo = action$ =>
   action$.ofType(TODOS_EDIT_REQUEST)
     .mergeMap(action =>
-      ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${action.id}`, {
-        text: action.text,
-      }, { 'Content-Type': 'application/json' })
+      TodoApiService.edit(action.id, action.text)
         .map(() => ({ type: TODOS_EDIT_SUCCESS, id: action.id, text: action.text }))
         .catch(createErrorAction(`Failed to edit task #${action.id}`)),
     );
