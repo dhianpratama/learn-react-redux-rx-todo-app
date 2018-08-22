@@ -12,11 +12,11 @@ import {
   TODOS_EDIT_SUCCESS,
   TODOS_REMOVE_COMPLETED_REQUEST,
   TODOS_REMOVE_COMPLETED_SUCCESS,
-} from './actions';
+} from '../actions/TodoMainActions';
 
 import {
   getIncompleteTodos
-} from './selectors'
+} from '../selectors/TodoMainSelectors'
 
 const initialState = {
   pending: false,

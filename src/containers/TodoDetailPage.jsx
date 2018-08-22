@@ -7,7 +7,7 @@ import TodoDetail from '../components/TodoDetail';
 
 import {
   getTodoDetail
-} from '../modules/todoDetail/actions';
+} from '../actions/TodoDetailActions';
 
 class TodoDetailPage extends React.Component {
   static propTypes = {

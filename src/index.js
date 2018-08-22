@@ -10,7 +10,8 @@ import { createEpicMiddleware } from 'redux-observable';
 import TodoMainPage from './containers/TodoMainPage';
 import TodoDetailPage from './containers/TodoDetailPage';
 import App from './containers/App';
-import { reducers, epics } from './modules';
+import epics from './epics';
+import reducers from './reducers';
 
 // eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -14,8 +14,8 @@ import {
   editTodo,
   deleteTodo,
   completeTodo
-} from '../modules/todoMain/actions';
-import { setVisibilityFilter } from '../modules/visibilityFilter/actions';
+} from '../actions/TodoMainActions';
+import { setVisibilityFilter } from '../actions/VisibilityFilterActions';
 
 class TodoMainPage extends React.Component {
   static propTypes = {
