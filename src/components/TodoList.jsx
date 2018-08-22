@@ -4,7 +4,7 @@ import TodoItem from './TodoItem';
 import Footer from './Footer';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../modules/visibilityFilter/actions';
 
-import './TodoList.css'
+import '../styles/TodoList.css'
 
 const filters = {
   [SHOW_ALL]: () => true,

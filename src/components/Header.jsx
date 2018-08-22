@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ErrorMessage from './ErrorMessage';
 
-import './Header.css'
+import '../styles/Header.css'
 
 export default class Header extends Component {
   static propTypes = {

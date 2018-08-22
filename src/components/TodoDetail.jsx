@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router'
 import Moment from 'moment';
 
-import './TodoDetail.css';
+import '../styles/TodoDetail.css';
 
 const DATE_FORMAT = 'DD MMM YYYY hh:mm:ss';
 

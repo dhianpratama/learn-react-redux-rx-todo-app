@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../modules/visibilityFilter/actions';
 
-import './Footer.css';
+import '../styles/Footer.css';
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',
