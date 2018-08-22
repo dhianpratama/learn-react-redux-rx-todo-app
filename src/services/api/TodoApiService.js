@@ -12,13 +12,13 @@ class TodoApiService {
       text,
       completed: false,
       createdAt: Moment().utc()
-    })
+    }, { 'Content-Type': 'application/json' })
   }
 
   static edit(id, text) {
     return ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${id}`, {
       text: text,
-    })
+    }, { 'Content-Type': 'application/json' })
   }
 
   static delete(id) {
@@ -26,10 +26,11 @@ class TodoApiService {
   }
 
   static updateComplete(id, completed) {
+    console.log('update completed ', id, completed)
     return ajax.patch(`${process.env.REACT_APP_API_HOST}/todos/${id}`, {
       completed: !completed,
       completedAt: Moment().utc()
-    })
+    }, { 'Content-Type': 'application/json' })
   }
 
 }
